@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Network Error - Underwater</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #08709b;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+  }
+
+  .container {
+    text-align: center;
+  }
+
+  .error-message {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .ocean {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(to bottom, #0099cc 20%, #ffffff 40%);
+    animation: waves 10s infinite linear;
+  }
+
+  @keyframes waves {
+    0% { background-position: 0 0; }
+    100% { background-position: 0 100%; }
+  }
+
+  .fish {
+    position: absolute;
+    bottom: 50px;
+    animation: swim 10s infinite;
+  }
+
+  @keyframes swim {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+
+  .fish1 { left: -100px; }
+  .fish2 { left: -200px; }
+  .fish3 { left: -300px; }
+  /* Add more fish classes as needed */
+
+  .error-message {
+    position: relative;
+    z-index: 1;
+  }
+</style>
+</head>
+<body>
+<div class="ocean"></div>
+<div class="container">
+  <div class="error-message">Network Error</div>
+  <img class="fish fish1" src="https://via.placeholder.com/100x50" alt="Fish">
+  <img class="fish fish2" src="https://via.placeholder.com/100x50" alt="Fish">
+  <img class="fish fish3" src="https://via.placeholder.com/100x50" alt="Fish">
+  <!-- Add more fish images as needed -->
+</div>
+</body>
+</html>

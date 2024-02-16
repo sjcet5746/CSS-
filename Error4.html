@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forest Network Error</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    overflow: hidden;
+  }
+  
+  #forest-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  #tree1,
+  #tree2 {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 50%;
+    background-image: url('https://via.placeholder.com/500x800'); /* Replace with actual tree image */
+    background-repeat: no-repeat;
+    background-size: cover;
+    animation: leaves-falling 20s linear infinite;
+  }
+  
+  #tree2 {
+    right: 0;
+    transform: scaleX(-1);
+  }
+  
+  @keyframes leaves-falling {
+    0% {
+      transform: translateY(-100vh);
+    }
+    100% {
+      transform: translateY(100vh);
+    }
+  }
+  
+  #error-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: 24px;
+    color: #333;
+  }
+</style>
+</head>
+<body>
+<div id="forest-container">
+  <div id="tree1"></div>
+  <div id="tree2"></div>
+  <div id="error-message">
+    <h1>Oops! Network Error</h1>
+    <p>We're sorry, there seems to be an issue with the network. Please try again later.</p>
+  </div>
+</div>
+</body>
+</html>

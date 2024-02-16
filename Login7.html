@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Magical Forest Login</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #77ab59; /* Forest green */
+    overflow: hidden;
+  }
+
+  .container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://via.placeholder.com/1500x1000') no-repeat center center/cover;
+    z-index: -1;
+    animation: sway 20s infinite alternate linear;
+  }
+
+  @keyframes sway {
+    0% { transform: translateX(-5%); }
+    100% { transform: translateX(5%); }
+  }
+
+  .fireflies {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .firefly {
+    position: absolute;
+    background: radial-gradient(white, transparent);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    opacity: 0.5;
+    pointer-events: none;
+    animation: flicker 2s infinite alternate;
+  }
+
+  @keyframes flicker {
+    0% { opacity: 0.5; }
+    100% { opacity: 1; }
+  }
+
+  .login-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    text-align: center;
+  }
+
+  .login-container h2 {
+    margin-bottom: 20px;
+    color: #333;
+  }
+
+  .input-field {
+    margin-bottom: 20px;
+    position: relative;
+  }
+
+  .input-field input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #333;
+    transition: border-bottom-color 0.3s ease;
+  }
+
+  .input-field input:focus {
+    border-bottom-color: #77ab59; /* Forest green */
+  }
+
+  .login-btn {
+    background-color: #77ab59; /* Forest green */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .login-btn:hover {
+    background-color: #558844; /* Darker forest green */
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="background"></div>
+  <div class="fireflies">
+    <!-- Fireflies will be dynamically added here using JavaScript -->
+  </div>
+  <div class="login-container">
+    <h2>Enter the Magical Forest</h2>
+    <div class="input-field">
+      <input type="text" placeholder="Username" required>
+    </div>
+    <div class="input-field">
+      <input type="password" placeholder="Password" required>
+    </div>
+    <button class="login-btn">Login</button>
+  </div>
+</div>
+
+<script>
+  // Dynamically generate fireflies
+  const fireflyContainer = document.querySelector('.fireflies');
+  const numberOfFireflies = 30;
+
+  for (let i = 0; i < numberOfFireflies; i++) {
+    const firefly = document.createElement('div');
+    firefly.classList.add('firefly');
+    firefly.style.top = `${Math.random() * 100}%`;
+    firefly.style.left = `${Math.random() * 100}%`;
+    firefly.style.animationDelay = `${Math.random() * 5}s`; // Add delay to make flicker seem random
+    fireflyContainer.appendChild(firefly);
+  }
+</script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Magical Forest Login</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #77ab59; /* Forest green */
+    overflow: hidden;
+  }
+
+  .container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://via.placeholder.com/1500x1000') no-repeat center center/cover;
+    z-index: -1;
+    animation: sway 20s infinite alternate linear;
+  }
+
+  @keyframes sway {
+    0% { transform: translateX(-5%); }
+    100% { transform: translateX(5%); }
+  }
+
+  .fireflies {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .firefly {
+    position: absolute;
+    background: radial-gradient(white, transparent);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    opacity: 0.5;
+    pointer-events: none;
+    animation: flicker 2s infinite alternate;
+  }
+
+  @keyframes flicker {
+    0% { opacity: 0.5; }
+    100% { opacity: 1; }
+  }
+
+  .login-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    text-align: center;
+  }
+
+  .login-container h2 {
+    margin-bottom: 20px;
+    color: #333;
+  }
+
+  .input-field {
+    margin-bottom: 20px;
+    position: relative;
+  }
+
+  .input-field input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #333;
+    transition: border-bottom-color 0.3s ease;
+  }
+
+  .input-field input:focus {
+    border-bottom-color: #77ab59; /* Forest green */
+  }
+
+  .login-btn {
+    background-color: #77ab59; /* Forest green */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .login-btn:hover {
+    background-color: #558844; /* Darker forest green */
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="background"></div>
+  <div class="fireflies">
+    <!-- Fireflies will be dynamically added here using JavaScript -->
+  </div>
+  <div class="login-container">
+    <h2>Enter the Magical Forest</h2>
+    <div class="input-field">
+      <input type="text" placeholder="Username" required>
+    </div>
+    <div class="input-field">
+      <input type="password" placeholder="Password" required>
+    </div>
+    <button class="login-btn">Login</button>
+  </div>
+</div>
+
+<script>
+  // Dynamically generate fireflies
+  const fireflyContainer = document.querySelector('.fireflies');
+  const numberOfFireflies = 30;
+
+  for (let i = 0; i < numberOfFireflies; i++) {
+    const firefly = document.createElement('div');
+    firefly.classList.add('firefly');
+    firefly.style.top = `${Math.random() * 100}%`;
+    firefly.style.left = `${Math.random() * 100}%`;
+    firefly.style.animationDelay = `${Math.random() * 5}s`; // Add delay to make flicker seem random
+    fireflyContainer.appendChild(firefly);
+  }
+</script>
+
+</body>
+</html>

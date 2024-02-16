@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Magical Network Error</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: #0d0d0d;
+        overflow: hidden;
+    }
+    
+    .container {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        color: #ffffff;
+        font-family: Arial, sans-serif;
+    }
+    
+    .error-message {
+        font-size: 24px;
+        margin-bottom: 20px;
+        text-align: center;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+    }
+    
+    .firefly {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background-color: #ffff00;
+        border-radius: 50%;
+        animation: flicker 2s infinite alternate;
+    }
+    
+    @keyframes flicker {
+        0% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0.5;
+        }
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h1 class="error-message">Oops! Network Error</h1>
+</div>
+
+<script>
+    // Function to create fireflies
+    function createFirefly() {
+        const firefly = document.createElement('div');
+        firefly.classList.add('firefly');
+        firefly.style.left = `${Math.random() * 100}vw`;
+        firefly.style.top = `${Math.random() * 100}vh`;
+        document.body.appendChild(firefly);
+        
+        // Remove firefly after some time to prevent memory leaks
+        setTimeout(() => {
+            firefly.remove();
+        }, 10000);
+    }
+    
+    // Generate fireflies periodically
+    setInterval(createFirefly, 1000);
+    
+    // Show error message after some delay
+    setTimeout(() => {
+        const errorMessage = document.querySelector('.error-message');
+        errorMessage.style.opacity = '1';
+    }, 2000);
+</script>
+</body>
+</html>

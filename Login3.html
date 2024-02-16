@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Celestial Login Page</title>
+  <style>
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+.login-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+.login-form {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.login-form h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.login-form button {
+  width: 100%;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.login-form button:hover {
+  background-color: #45a049;
+}
+
+.celestial {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://www.transparenttextures.com/patterns/dark-matter.png');
+  opacity: 0.8;
+  z-index: 0;
+}
+
+.star {
+  position: absolute;
+  background-color: #FFF;
+  border-radius: 50%;
+  animation: twinkling 1s infinite alternate;
+}
+
+.star:nth-child(1) {
+  width: 2px;
+  height: 2px;
+  top: 20%;
+  left: 40%;
+}
+
+.star:nth-child(2) {
+  width: 3px;
+  height: 3px;
+  top: 70%;
+  left: 60%;
+}
+
+.star:nth-child(3) {
+  width: 1px;
+  height: 1px;
+  top: 50%;
+  left: 80%;
+}
+
+.planet {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background-color: #FFD700;
+  border-radius: 50%;
+  animation: orbit 10s linear infinite;
+}
+
+.planet:nth-child(1) {
+  top: 30%;
+  left: 20%;
+}
+
+.planet:nth-child(2) {
+  top: 70%;
+  left: 80%;
+}
+
+@keyframes twinkling {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes orbit {
+  0% {
+    transform: rotate(0deg) translateX(150px) rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg) translateX(150px) rotate(-360deg);
+  }
+}
+</style>
+</head>
+<body>
+  <div class="login-container">
+    <form class="login-form">
+      <h2>Login</h2>
+      <input type="text" placeholder="Username">
+      <input type="password" placeholder="Password">
+      <button type="submit">Login</button>
+    </form>
+  </div>
+  <div class="celestial"></div>
+</body>
+</html>

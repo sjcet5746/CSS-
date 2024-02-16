@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cosmic Login</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #000;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .login-container {
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    overflow: hidden;
+    position: relative;
+    width: 300px;
+  }
+  
+  .login-container h2 {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 20px;
+  }
+  
+  .input-field {
+    position: relative;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  
+  .input-field input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: #fff;
+    border-bottom: 2px solid #fff;
+    transition: border-bottom-color 0.3s ease;
+  }
+  
+  .input-field input:hover, 
+  .input-field input:focus {
+    border-bottom-color: #55acee;
+  }
+  
+  .input-field label {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 10px;
+    pointer-events: none;
+    transition: transform 0.3s ease;
+    transform: translateY(100%);
+    color: #fff;
+  }
+  
+  .input-field:hover label, 
+  .input-field input:focus + label {
+    transform: translateY(0);
+  }
+  
+  .login-btn {
+    background-color: #55acee;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+  }
+  
+  .login-btn:hover {
+    background-color: #007bb5;
+  }
+  
+  .space-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://i.imgur.com/XNHoPQw.jpg') no-repeat center center/cover;
+    z-index: -1;
+    animation: zoom-in 10s ease forwards;
+  }
+  
+  @keyframes zoom-in {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(1.1);
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="login-container">
+  <h2>Cosmic Login</h2>
+  <div class="input-field">
+    <input type="text" id="username" required>
+    <label for="username">Username</label>
+  </div>
+  <div class="input-field">
+    <input type="password" id="password" required>
+    <label for="password">Password</label>
+  </div>
+  <button class="login-btn">Login</button>
+  <div class="space-bg"></div>
+</div>
+
+</body>
+</html>

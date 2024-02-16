@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Code Editors</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/codemirror.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/theme/material.min.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    header {
+      background-color: #333;
+      color: white;
+      padding: 10px;
+      text-align: center;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      justify-content: space-between;
+      height: calc(100% - 40px);
+    }
+
+    .editor-container {
+      flex: 1;
+      height: 100%;
+    }
+
+    .CodeMirror {
+      height: 100%;
+      border: 1px solid #ddd;
+    }
+
+    #result-frame {
+      flex: 1;
+      border: none;
+      height: 100%;
+    }
+
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Code Editors</h1>
+</header>
+
+<main>
+  <div class="editor-container">
+    <h2>HTML</h2>
+    <textarea id="html-editor">&lt;!-- Enter your HTML code here --&gt;</textarea>
+  </div>
+
+  <div class="editor-container">
+    <h2>CSS</h2>
+    <textarea id="css-editor">/* Enter your CSS code here */</textarea>
+  </div>
+
+  <div class="editor-container">
+    <h2>JavaScript</h2>
+    <textarea id="js-editor">// Enter your JavaScript code here</textarea>
+  </div>
+</main>
+
+<button onclick="runCode()">Run</button>
+
+<!-- Result iframe -->
+<iframe id="result-frame"></iframe>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/mode/htmlmixed/htmlmixed.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/mode/css/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/mode/javascript/javascript.min.js"></script>
+<script>
+  // Initialize CodeMirror for HTML editor
+  var htmlEditor = CodeMirror.fromTextArea(document.getElementById("html-editor"), {
+    lineNumbers: true,
+    mode: "htmlmixed",
+    theme: "material"
+  });
+
+  // Initialize CodeMirror for CSS editor
+  var cssEditor = CodeMirror.fromTextArea(document.getElementById("css-editor"), {
+    lineNumbers: true,
+    mode: "css",
+    theme: "material"
+  });
+
+  // Initialize CodeMirror for JavaScript editor
+  var jsEditor = CodeMirror.fromTextArea(document.getElementById("js-editor"), {
+    lineNumbers: true,
+    mode: "javascript",
+    theme: "material"
+  });
+
+  // Function to run the code
+  function runCode() {
+    var htmlCode = htmlEditor.getValue();
+    var cssCode = cssEditor.getValue();
+    var jsCode = jsEditor.getValue();
+
+    var resultFrame = document.getElementById("result-frame").contentWindow.document;
+    resultFrame.open();
+    resultFrame.write(`<style>${cssCode}</style>`);
+    resultFrame.write(htmlCode);
+    resultFrame.write(`<script>${jsCode}</script>`);
+    resultFrame.close();
+  }
+</script>
+
+</body>
+</html>

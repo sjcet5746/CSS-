@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Underwater Login Page</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #0077cc; /* Deep blue color for the background */
+    overflow: hidden; /* Hide overflow to prevent scrolling */
+    position: relative; /* Set position to relative for absolute positioning of elements */
+  }
+  
+  /* Animation for fish movement */
+  @keyframes fish-swim {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+  
+  /* Style for the fish */
+  .fish {
+    position: absolute;
+    top: 50%;
+    left: -100px;
+    width: 100px;
+    height: 50px;
+    background-color: #ffcc00; /* Yellow color for the fish */
+    border-radius: 50%;
+    animation: fish-swim 10s linear infinite; /* Apply the fish-swim animation */
+  }
+  
+  /* Style for the login container */
+  .login-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white color for the container */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  }
+  
+  /* Style for the login form */
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Style for the input fields */
+  .input-field {
+    margin-bottom: 20px;
+    position: relative;
+    width: 300px;
+  }
+  
+  /* Style for the input fields */
+  .input-field input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-bottom: 2px solid #fff; /* White bottom border */
+    outline: none;
+    background-color: transparent;
+    color: #fff; /* White color for text */
+    transition: border-bottom-color 0.3s ease; /* Smooth transition for border color */
+  }
+  
+  /* Style for the input fields on hover */
+  .input-field input:hover,
+  .input-field input:focus {
+    border-bottom-color: #66ccff; /* Light blue color for border on hover/focus */
+  }
+  
+  /* Style for the submit button */
+  .submit-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #66ccff; /* Light blue color for the button */
+    color: #fff; /* White color for text */
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+  }
+  
+  /* Style for the submit button on hover */
+  .submit-btn:hover {
+    background-color: #3399ff; /* Darker blue color for button on hover */
+  }
+</style>
+</head>
+<body>
+
+<div class="fish"></div>
+
+<div class="login-container">
+  <h2>Underwater Login</h2>
+  <form class="login-form" action="#" method="post">
+    <div class="input-field">
+      <input type="text" name="username" id="username" required>
+      <label for="username">Username</label>
+    </div>
+    <div class="input-field">
+      <input type="password" name="password" id="password" required>
+      <label for="password">Password</label>
+    </div>
+    <button type="submit" class="submit-btn">Login</button>
+  </form>
+</div>
+
+</body>
+</html>

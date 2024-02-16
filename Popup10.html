@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Customizable Pop-up Window</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+  }
+
+  .popup-container {
+    background-color: var(--popup-background-color, #fff);
+    border-radius: var(--popup-border-radius, 10px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    padding: var(--popup-padding, 20px);
+    width: 300px;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .popup-content {
+    padding: 20px;
+  }
+
+  .popup-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--overlay-background-color, rgba(0, 0, 0, 0.5));
+  }
+
+  .close-btn {
+    cursor: pointer;
+    color: var(--close-btn-color, #666);
+    font-size: 20px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+:root {
+  --popup-background-color: #f0f0f0;
+}
+
+</style>
+</head>
+<body>
+
+<div class="popup-container" id="popup">
+  <div class="popup-overlay"></div>
+  <span class="close-btn" onclick="closePopup()">×</span>
+  <div class="popup-content">
+    <h2>Welcome to Our Website!</h2>
+    <p>Thank you for visiting. Explore our latest collections and offers.</p>
+  </div>
+</div>
+
+<script>
+  // Function to close the pop-up window
+  function closePopup() {
+    document.getElementById('popup').style.display = 'none';
+  }
+</script>
+
+</body>
+</html>
