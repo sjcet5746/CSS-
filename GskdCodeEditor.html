@@ -5,20 +5,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Code Editor</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/codemirror.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/theme/material.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/theme/dracula.min.css">
   <style>
-    /* Adjust editor size */
-    .CodeMirror {
-      height: calc(100vh - 50px); /* Adjust the height to fit the viewport */
-      border: none;
-      font-size: 16px;
+    body {
+      background: linear-gradient(to bottom, #4b6cb7, #182848);
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Code editor container */
+    #editor-container {
+      width: 50%;
+      margin: auto;
+      margin-top: 20px;
     }
 
     /* Result iframe */
     #result-frame {
       width: 100%;
-      height: calc(100vh - 50px); /* Adjust the height to fit the viewport */
+      height: 300px;
       border: none;
+      margin-top: 20px;
+    }
+
+    /* Button container */
+    .button-container {
+      text-align: center;
+      margin-top: 20px;
     }
 
     /* Button styles */
@@ -39,29 +52,32 @@
     .button:hover {
       background-color: #45a049;
     }
+
+    /* Adjust editor size */
+    .CodeMirror {
+      height: 400px;
+      border: 1px solid #ddd;
+      font-size: 16px;
+    }
   </style>
 </head>
 <body>
 
-<h1>Code Editor</h1>
-
-
 <!-- Code editor container -->
-<div id="editor-container">
-
-</div>
-
-<!-- Run button -->
-<button class="button" onclick="runCode()">Run</button>
-
-<!-- New File button -->
-<button class="button" onclick="newFile()">New File</button>
-
-<!-- Save button -->
-<button class="button" onclick="saveFile()">Save</button>
+<div id="editor-container"></div>
 
 <!-- Result iframe -->
 <iframe id="result-frame" frameborder="0"></iframe>
+
+<!-- Button container -->
+<div class="button-container">
+  <!-- Run button -->
+  <button class="button" onclick="runCode()">Run</button>
+  <!-- New File button -->
+  <button class="button" onclick="newFile()">New File</button>
+  <!-- Save button -->
+  <button class="button" onclick="saveFile()">Save</button>
+</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/codemirror.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/mode/htmlmixed/htmlmixed.min.js"></script>
@@ -70,7 +86,7 @@
   var editor = CodeMirror(document.getElementById("editor-container"), {
     lineNumbers: true, // Show line numbers
     mode: "htmlmixed", // Set editor mode
-    theme: "vscode-dark" // Set editor theme
+    theme: "dracula" // Set editor theme
   });
 
   // Function to run the code

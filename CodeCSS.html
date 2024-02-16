@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Code Editor</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/codemirror.min.css">
+  <style>
+    /* Linear background */
+    body {
+      background: linear-gradient(to bottom, #1e5799, #2989d8);
+      color: white;
+    }
+
+    /* Code editor container */
+    .editor-container {
+      width: 50%;
+      height: 50vh;
+      position: relative;
+      margin: auto;
+      margin-bottom: 20px;
+    }
+
+    /* Result iframe */
+    #result-frame {
+      width: 50%;
+      height: 50vh;
+      border: none;
+      position: relative;
+      margin: auto;
+    }
+
+    /* Button container */
+    .button-container {
+      text-align: center;
+    }
+
+    /* Button styles */
+    .button {
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+
+    .button:hover {
+      background-color: #45a049;
+    }
+
+    /* CodeMirror */
+    .CodeMirror {
+      height: 100%;
+      font-size: 14px;
+    }
+
+    /* Editor and result container */
+    .editor-result-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+  </style>
+</head>
+<body>
+
+<div class="editor-result-container">
+  <!-- Code editor container -->
+  <div class="editor-container">
+    <textarea id="code-editor">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Hello World&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;h2&gt;Hello, World!&lt;/h2&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+    </textarea>
+  </div>
+
+  <!-- Result iframe -->
+  <iframe id="result-frame" frameborder="0"></iframe>
+</div>
+
+<!-- Button container -->
+<div class="button-container">
+  <!-- Run button -->
+  <button class="button" onclick="runCode()">Run</button>
+
+  <!-- New File button -->
+  <button class="button" onclick="newFile()">New File</button>
+
+  <!-- Save button -->
+  <button class="button" onclick="saveFile()">Save</button>
+  
+  <!-- Theme buttons -->
+  <button class="button" onclick="toggleTheme()">Toggle Theme</button>
+  <input type="color" id="color-picker">
+  <button class="button" onclick="setCustomColor()">Set Color</button>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/mode/htmlmixed/htmlmixed.min.js"></script>
+<script>
+  var editor = CodeMirror.fromTextArea(document.getElementById("code-editor"), {
+    lineNumbers: true,
+    mode: "htmlmixed",
+    theme: "darcula"
+  });
+
+  function runCode() {
+    var code = editor.getValue();
+    var resultFrame = document.getElementById("result-frame").contentWindow.document;
+    resultFrame.open();
+    resultFrame.write(code);
+    resultFrame.close();
+  }
+
+  function newFile() {
+    editor.setValue('');
+  }
+
+  function saveFile() {
+    var content = editor.getValue();
+    var filename = prompt("Please enter the filename:", "code.html");
+    if (filename) {
+      var blob = new Blob([content], { type: "text/plain;charset=utf-8" });
+      saveAs(blob, filename);
+    }
+  }
+  
+  function toggleTheme() {
+    var currentTheme = editor.getOption("theme");
+    if (currentTheme === "darcula") {
+      editor.setOption("theme", "default");
+    } else {
+      editor.setOption("theme", "darcula");
+    }
+  }
+  
+  function setCustomColor() {
+    var color = document.getElementById("color-picker").value;
+    editor.setOption("theme", { base: "cm-s-default", editor: "colorful", colors: { "variable": color } });
+  }
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+
+</body>
+</html>

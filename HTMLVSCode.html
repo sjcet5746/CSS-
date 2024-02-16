@@ -5,20 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Code Editor</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/codemirror.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/theme/material.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/theme/dracula.min.css">
   <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #2c3e50, #3498db); /* Linear background */
+      color: #fff;
+      display: flex;
+      flex-direction: row;
+    }
+
     /* Adjust editor size */
-    .CodeMirror {
-      height: calc(100vh - 50px); /* Adjust the height to fit the viewport */
-      border: none;
-      font-size: 16px;
+    #editor-container {
+      flex: 1;
+      padding: 20px;
     }
 
     /* Result iframe */
     #result-frame {
-      width: 100%;
-      height: calc(100vh - 50px); /* Adjust the height to fit the viewport */
+      width: 50%;
       border: none;
+      background-color: #fff;
     }
 
     /* Button styles */
@@ -26,12 +35,12 @@
       background-color: #4CAF50;
       border: none;
       color: white;
-      padding: 15px 32px;
+      padding: 10px 20px;
       text-align: center;
       text-decoration: none;
       display: inline-block;
       font-size: 16px;
-      margin: 4px 2px;
+      margin: 10px;
       cursor: pointer;
       border-radius: 8px;
     }
@@ -43,13 +52,11 @@
 </head>
 <body>
 
-<h1>Code Editor</h1>
-
-
 <!-- Code editor container -->
-<div id="editor-container">
+<div id="editor-container"></div>
 
-</div>
+<!-- Result iframe -->
+<iframe id="result-frame" frameborder="0"></iframe>
 
 <!-- Run button -->
 <button class="button" onclick="runCode()">Run</button>
@@ -60,9 +67,6 @@
 <!-- Save button -->
 <button class="button" onclick="saveFile()">Save</button>
 
-<!-- Result iframe -->
-<iframe id="result-frame" frameborder="0"></iframe>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/codemirror.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/mode/htmlmixed/htmlmixed.min.js"></script>
 <script>
@@ -70,7 +74,7 @@
   var editor = CodeMirror(document.getElementById("editor-container"), {
     lineNumbers: true, // Show line numbers
     mode: "htmlmixed", // Set editor mode
-    theme: "vscode-dark" // Set editor theme
+    theme: "dracula" // Set editor theme
   });
 
   // Function to run the code

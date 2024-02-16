@@ -5,20 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Code Editor</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/codemirror.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/theme/material.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/theme/dracula.min.css">
   <style>
-    /* Adjust editor size */
-    .CodeMirror {
-      height: calc(100vh - 50px); /* Adjust the height to fit the viewport */
-      border: none;
-      font-size: 16px;
+    /* Adjust layout */
+    body {
+      display: flex;
+      justify-content: space-between;
+      align-items: stretch;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
     }
 
-    /* Result iframe */
-    #result-frame {
-      width: 100%;
-      height: calc(100vh - 50px); /* Adjust the height to fit the viewport */
-      border: none;
+    /* Left side with linear background */
+    #left-side {
+      flex: 1;
+      padding: 20px;
+      background: linear-gradient(to right, #4b6cb7, #182848);
+      color: white;
+    }
+
+    /* Code editor container */
+    #editor-container {
+      height: calc(100% - 40px);
     }
 
     /* Button styles */
@@ -39,29 +48,44 @@
     .button:hover {
       background-color: #45a049;
     }
+
+    /* Right side for result iframe */
+    #right-side {
+      flex: 1;
+      padding: 20px;
+    }
+
+    /* Result iframe */
+    #result-frame {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
   </style>
 </head>
 <body>
 
-<h1>Code Editor</h1>
+<div id="left-side">
+  <h1>Code Editor</h1>
 
+  <!-- Code editor container -->
+  <div id="editor-container"></div>
 
-<!-- Code editor container -->
-<div id="editor-container">
-
+  <!-- Buttons -->
+  <div style="text-align: center; margin-top: 20px;">
+    <!-- New File button -->
+    <button class="button" onclick="newFile()">New File</button>
+    <!-- Save button -->
+    <button class="button" onclick="saveFile()">Save</button>
+    <!-- Run button -->
+    <button class="button" onclick="runCode()">Run</button>
+  </div>
 </div>
 
-<!-- Run button -->
-<button class="button" onclick="runCode()">Run</button>
-
-<!-- New File button -->
-<button class="button" onclick="newFile()">New File</button>
-
-<!-- Save button -->
-<button class="button" onclick="saveFile()">Save</button>
-
-<!-- Result iframe -->
-<iframe id="result-frame" frameborder="0"></iframe>
+<div id="right-side">
+  <!-- Result iframe -->
+  <iframe id="result-frame" frameborder="0"></iframe>
+</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/codemirror.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/mode/htmlmixed/htmlmixed.min.js"></script>
@@ -70,7 +94,7 @@
   var editor = CodeMirror(document.getElementById("editor-container"), {
     lineNumbers: true, // Show line numbers
     mode: "htmlmixed", // Set editor mode
-    theme: "vscode-dark" // Set editor theme
+    theme: "dracula" // Set editor theme
   });
 
   // Function to run the code
@@ -81,12 +105,12 @@
     resultFrame.write(code);
     resultFrame.close();
   }
-  
+
   // Function to create a new file
   function newFile() {
     editor.setValue(''); // Clear editor content
   }
-  
+
   // Function to save file with specified filename
   function saveFile() {
     var content = editor.getValue();

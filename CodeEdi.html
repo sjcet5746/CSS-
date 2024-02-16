@@ -5,20 +5,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Code Editor</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/codemirror.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/theme/material.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/theme/darcula.min.css">
   <style>
-    /* Adjust editor size */
-    .CodeMirror {
-      height: calc(100vh - 50px); /* Adjust the height to fit the viewport */
-      border: none;
-      font-size: 16px;
+    /* Linear background */
+    body {
+      background: linear-gradient(to bottom, #1e5799, #2989d8);
+      color: white;
+    }
+
+    /* Code editor container */
+    .editor-container {
+      width: 50%;
+      height: 50vh;
+      position: relative;
+      margin: auto;
+      margin-bottom: 20px;
     }
 
     /* Result iframe */
     #result-frame {
-      width: 100%;
-      height: calc(100vh - 50px); /* Adjust the height to fit the viewport */
+      width: 50%;
+      height: 50vh;
       border: none;
+      position: relative;
+      margin: auto;
+    }
+
+    /* Button container */
+    .button-container {
+      text-align: center;
     }
 
     /* Button styles */
@@ -39,38 +54,66 @@
     .button:hover {
       background-color: #45a049;
     }
+
+    /* CodeMirror */
+    .CodeMirror {
+      height: 100%;
+      font-size: 14px;
+    }
+
+    /* Editor and result container */
+    .editor-result-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
   </style>
 </head>
 <body>
 
-<h1>Code Editor</h1>
+<div class="editor-result-container">
+  <!-- Code editor container -->
+  <div class="editor-container">
+    <textarea id="code-editor">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Hello World&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
 
+&lt;h2&gt;Hello, World!&lt;/h2&gt;
 
-<!-- Code editor container -->
-<div id="editor-container">
+&lt;/body&gt;
+&lt;/html&gt;
+    </textarea>
+  </div>
 
+  <!-- Result iframe -->
+  <iframe id="result-frame" frameborder="0"></iframe>
 </div>
 
-<!-- Run button -->
-<button class="button" onclick="runCode()">Run</button>
+<!-- Button container -->
+<div class="button-container">
+  <!-- Run button -->
+  <button class="button" onclick="runCode()">Run</button>
 
-<!-- New File button -->
-<button class="button" onclick="newFile()">New File</button>
+  <!-- New File button -->
+  <button class="button" onclick="newFile()">New File</button>
 
-<!-- Save button -->
-<button class="button" onclick="saveFile()">Save</button>
-
-<!-- Result iframe -->
-<iframe id="result-frame" frameborder="0"></iframe>
+  <!-- Save button -->
+  <button class="button" onclick="saveFile()">Save</button>
+</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/codemirror.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/mode/htmlmixed/htmlmixed.min.js"></script>
 <script>
   // Initialize CodeMirror
-  var editor = CodeMirror(document.getElementById("editor-container"), {
+  var editor = CodeMirror.fromTextArea(document.getElementById("code-editor"), {
     lineNumbers: true, // Show line numbers
     mode: "htmlmixed", // Set editor mode
-    theme: "vscode-dark" // Set editor theme
+    theme: "darcula" // Set editor theme
   });
 
   // Function to run the code
@@ -81,12 +124,12 @@
     resultFrame.write(code);
     resultFrame.close();
   }
-  
+
   // Function to create a new file
   function newFile() {
     editor.setValue(''); // Clear editor content
   }
-  
+
   // Function to save file with specified filename
   function saveFile() {
     var content = editor.getValue();
